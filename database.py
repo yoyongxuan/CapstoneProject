@@ -1,4 +1,4 @@
-import json,sqlite3
+
 def initialise_database():
     with open('bus_stops.json') as f:
         bus_stops = json.load(f)
