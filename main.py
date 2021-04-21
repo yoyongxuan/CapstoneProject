@@ -19,20 +19,17 @@ c.close()
 
 
 
-shortest_route(bus_stops[75009])
-print('a')
-#bus_stops[75009].shortest_route()
 
-#print(bus_stops[96241].shortest_distance(bus_stops[75009]))
+# from flask import Flask, render_template, request
 
-#data = []
-# for bus_stop in bus_stops.values():
-#     data.append(f'{bus_stop} {bus_stop.shortest_distance(bus_stops[75009])}\n')
+# app = Flask("Gay Boy 9000")
 
-    #print(bus_stop,end=' , ')
-    #print(bus_stop.shortest_distance(bus_stops[75009]))
+# @app.route("/")
+# def root():
+#     return 'you are gay'#render_template("yes.html", info=None)
 
-# with open('depth_first.txt','w') as f:
-#     f.writelines(data)
+# @app.route("/gay")
+# def gay():
+#     return 'very gay'
 
-print(bus_stops[96241].get_route(bus_stops[75009]))
+# app.run("0.0.0.0")
