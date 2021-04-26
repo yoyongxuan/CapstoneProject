@@ -149,3 +149,12 @@ def shortest_route(start):
                     queue.append(next_stop)
             else:
                 pass
+
+
+def get_distances(bus_stops,destination):
+    result = []
+    for bus_stop_code in bus_stops:
+        bus_stop = bus_stops[bus_stop_code]
+        distance = bus_stop.shortest_distance(destination)
+        result.append((bus_stop,distance))
+    return result
