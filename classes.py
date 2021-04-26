@@ -5,7 +5,7 @@ class Bus_stop:
         self.Services = []
         #List of dictionaries of bus services available at this bus stop
         self.shortest_stop = None
-        #Tuple representing the bus stop to travel to to get closer to destination 
+        #Tuple representing the bus stop to travel to to get closer to start 
         #(Bus_stop object,distance to stop,list of bus services)
 
     def __repr__(self):
@@ -45,16 +45,16 @@ class Bus_stop:
                     result.append((next_stop,distance,[service_dict['ServiceNo']]))
         return result
     
-    def shortest_distance(self,destination):
+    def shortest_distance(self,start):
         '''
-        Returns the distance of the shortest route to the destination
+        Returns the distance of the shortest route from the start
         '''
-        if destination == self:
+        if start == self:
             return 0
         else:
             stop = self
             total_distance = 0
-            while stop != destination:
+            while stop != start:
                 if stop.shortest_stop == None:
                     return None
                 next_stop,distance,serviceno = stop.shortest_stop
@@ -62,18 +62,18 @@ class Bus_stop:
                 stop = next_stop
             return round(total_distance,1)
 
-    def get_route(self,destination):
+    def get_route(self,start):
         '''
-        Returns the shortest route to the destination in the form of a list and the total distance of the route
+        Returns the shortest route from the start in the form of a list and the total distance of the route
         ([(next stop,[list of services to reach stop]),...],total distance)
         '''
         result = []
-        if destination == self:
+        if start == self:
             return result
         else:
             stop = self
             total_distance = 0
-            while stop != destination:
+            while stop != start:
                 next_stop,distance,serviceno = stop.shortest_stop
                 result.append((next_stop,serviceno))
                 total_distance += round(distance,1)
@@ -150,11 +150,3 @@ def shortest_route(start):
             else:
                 pass
 
-
-def get_distances(bus_stops,destination):
-    result = []
-    for bus_stop_code in bus_stops:
-        bus_stop = bus_stops[bus_stop_code]
-        distance = bus_stop.shortest_distance(destination)
-        result.append((bus_stop,distance))
-    return result

@@ -8,7 +8,24 @@
 
     <body>
         <table>
-            s
+            <tr>
+                <th>Bus stop</th>
+                <th>Distance</th>
+                <th>Route</th>
+            </tr>
+            {% for bus_stop in info.distances %}
+            <tr>
+                <td>{{bus_stop[0]}}</td>
+                <td>{{bus_stop[1]}}</td>
+                <td>
+                    <form name = 'get_route' action = '/route' method = 'get'>
+                    <input type='hidden' name='destination' value={{bus_stop[2]}}>
+                    <input type='submit' value = 'Get Route'>
+                    </form>
+                </td>
+            </tr>
+            
+            {% endfor %}
         </table>
 
     </body>
